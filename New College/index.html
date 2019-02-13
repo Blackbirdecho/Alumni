@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar sticky-top navbar-dark bg-primary">
+    <a class="navbar-brand" href="#top"><strong>GCET Alumni</strong></a>
+<div class="container-ml-auto">
+    <a class="navbar-brand" href="#fourth">Connect</a>
+     <a class="navbar-brand" href="#fifth">Acheivements</a>
+  </div>
+    </nav>
+    <marquee direction="Left" behavior="Scroll" width="100%" height="40px"onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5" scrolldelay="100"><span><a href="/?q=faculty-development-programme-fdp-data-science-18th-23rd-february-2019">||Faculty Development Programme (FDP) on Data Science from 18th to 23rd February, 2019||</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="/?q=revaluation-bebtech-i-semester-main-backlogs-bebtech-14-backlogs-and-mca-i-semester-main-backlogs">|| HEYEYEYEYEE||  </a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="/?q=physical-verification-bebtech-i-semester-main-backlogs-bebtech-14-backlogs-and-mca-i-semester-main">|| Physical Verification of B.E./B.Tech I-Semester (Main &amp; Backlogs), B.E./B.Tech 1/4 (Backlogs) and MCA I-Semester (Main &amp; Backlogs), MCA 1/3(Backlogs) - Jan 2019 ||</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="/?q=memtech-examination-rescheduled-19-01-2019">|| ME/M.Tech Examination Rescheduled on 19-01-2019 ||</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="/?q=examination-notification-me-mtech-ist-sem-main-dec-2018">|| Examination Notification for ME /M.Tech Ist Sem (Main) Dec-2018 ||</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</marquee>
+    <div class="row" id="roo">
+        
+  <div class="column" style="background-color:cyan;">
+      <h1><u>Departments</u></h1>
+      <ul class="tree">
+    <li>>Btech
+     <ul>
+         <li><a href="ece.html">ECE</a></li>
+         <li><a href="eee.html">EEE</a></li>
+    <li>MECH</li>
+         <li><a href="cse.html">CSE</a></li>
+         <li>CIVIL</li>     
+         <li class="last"><a href="it.html">IT</a></li>
+     </ul>
+    </li>
+    <li class="last">>Pharmacy
+     <ul>
+      
+      <li>B.PHARM</li>
+         <li>M.PHARM</li>
+         <li>G.PHARM</li>
+         
+     </ul>
+    </li>
+          <li class="last">>MBA</li>
+   </ul>
+    
+  </div>
+  <div class="column" style="background-color:coral;">
+      <h1><u>Feedback</u></h1>
+    <div class="container" style='overflow:auto; width:700px;height:500px;'>
+   <form method="POST" id="comment_form">
+    <div class="form-group">
+     <input type="text" name="comment_name" id="comment_name" class="form-control" placeholder="Enter Name" />
+    </div>
+    <div class="form-group">
+     <textarea name="comment_content" id="comment_content" class="form-control" placeholder="Enter Comment" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+     <input type="hidden" name="comment_id" id="comment_id" value="0" />
+     <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+    </div>
+   </form>
+   <span id="comment_message"></span>
+   <br />
+   <div id="display_comment"></div>
+        
+  </div>
+  </div>
+        <script>
+$(document).ready(function(){
+ 
+ $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  var form_data = $(this).serialize();
+  $.ajax({
+   url:"add_comment.php",
+   method:"POST",
+   data:form_data,
+   dataType:"JSON",
+   success:function(data)
+   {
+    if(data.error != '')
+    {
+     $('#comment_form')[0].reset();
+     $('#comment_message').html(data.error);
+     $('#comment_id').val('0');
+     load_comment();
+    }
+   }
+  })
+ });
+
+ load_comment();
+
+ function load_comment()
+ {
+  $.ajax({
+   url:"fetch_comment.php",
+   method:"POST",
+   success:function(data)
+   {
+    $('#display_comment').html(data);
+   }
+  })
+ }
+
+ $(document).on('click', '.reply', function(){
+  var comment_id = $(this).attr("id");
+  $('#comment_id').val(comment_id);
+  $('#comment_name').focus();
+ });
+ 
+});
+</script>
+
+    
+</div>
+    
+   <div class="image3">
+
+  <div id="fourth">
+       <div class="container" style="background-color:lightblue">
+  <h3>This is a heading</h3>
+  <p>This is a paragraph.</p>
+</div>
+       
+       </div>
+</div>
+    <div class="image4">
+
+  <div id="fifth">
+       
+       
+       </div>
+</div>
+    
+</body>
+</html>
