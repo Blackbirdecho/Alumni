@@ -4,14 +4,22 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component2.css" />
+		<script src="js/modernizr-2.6.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
 <nav class="navbar sticky-top navbar-dark bg-primary">
@@ -26,28 +34,22 @@
         
   <div class="column" style="background-color:cyan;">
       <h1><u>Departments</u></h1>
-      <ul class="tree">
-    <li>>Btech
-     <ul>
-         <li><a href="ece.html">ECE</a></li>
-         <li><a href="eee.html">EEE</a></li>
-    <li>MECH</li>
-         <li><a href="cse.html">CSE</a></li>
-         <li>CIVIL</li>     
-         <li class="last"><a href="it.html">IT</a></li>
-     </ul>
-    </li>
-    <li class="last">>Pharmacy
-     <ul>
-      
-      <li>B.PHARM</li>
-         <li>M.PHARM</li>
-         <li>G.PHARM</li>
-         
-     </ul>
-    </li>
-          <li class="last">>MBA</li>
-   </ul>
+      <button class="cn-button" id="cn-button">Departments</button>
+				<div class="cn-wrapper" id="cn-wrapper">
+					<ul>
+						<li><a href="cse.html"><span>CSE</span></a></li>
+						<li><a href="ece.html"><span>ECE</span></a></li>
+						<li><a href="eee.html"><span>EEE</span></a></li>
+						<li><a href="mech.html"><span>MECH</span></a></li>
+						<li><a href="it.html"><span>IT</span></a></li>
+						<li><a href="civil.html"><span>CIVIL</span></a></li>
+						<li><a href="mba.html"><span>MBA</span></a></li>
+                        <li><a href="mtech.html"><span>ɥɔǝʇ`W</span></a></li>
+						<li><a href="#"><span>B.Pharm</span></a></li>
+						<li><a href="#"><span>M.Pharm</span></a></li>
+						<li><a href="#"><span>G.Pharm</span></a></li>
+					 </ul>
+				</div>
     
   </div>
   <div class="column" style="background-color:coral;">
@@ -138,6 +140,7 @@ $(document).ready(function(){
        
        </div>
 </div>
-    
+    <script src="js/polyfills.js"></script>
+		<script src="js/demo2.js"></script>
 </body>
 </html>
